@@ -43,7 +43,7 @@ class PullRefreshTableViewController : UITableViewController{
     var refreshArrow: UIImageView?
     var refreshSpinner: UIActivityIndicatorView?
     var isDragging: Bool?
-    var isLoading: Bool?
+    var isLoading: Bool? = false
     var textPull: String?
     var textRelease: String?
     var textLoading: String?
@@ -110,7 +110,8 @@ class PullRefreshTableViewController : UITableViewController{
         refreshLabel?.font = UIFont.boldSystemFont( ofSize:12.0)
         refreshLabel?.textAlignment = NSTextAlignment.center
 
-        refreshArrow = UIImageView(image:UIImage( named:"arrow.png"))
+        //refreshArrow = UIImageView(image:UIImage( named:"arrow.png"))
+        refreshArrow = UIImageView(image:UIImage( named:"arrow"))
         refreshArrow?.frame = CGRect(x: floor((REFRESH_HEADER_HEIGHT - 27) / 2),
                                     y: (floor(REFRESH_HEADER_HEIGHT - 44) / 2),
                                     width: 27,height: 44)

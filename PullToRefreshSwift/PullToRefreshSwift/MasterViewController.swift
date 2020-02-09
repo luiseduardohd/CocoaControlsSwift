@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: PullRefreshTableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
@@ -27,9 +27,15 @@ class MasterViewController: UITableViewController {
         }
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+    }
+    
+    override func refresh() {
+        //self.perform(Selector(("addItem")), with: nil, afterDelay: 2.0)
+        self.perform(Selector(("insertNewObject")), with: nil, afterDelay: 2.0)
     }
 
     @objc
@@ -37,6 +43,8 @@ class MasterViewController: UITableViewController {
         objects.insert(NSDate(), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        self.tableView.reloadData()
+        self.stopLoading()
     }
 
     // MARK: - Segues
