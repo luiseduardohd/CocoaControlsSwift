@@ -53,9 +53,6 @@ class DemoTableViewController : PullRefreshTableViewController {
         self.stopLoading()
     }
     
-    func dealloc() {
-        //items!.release()
-        //super.dealloc()
-    }
+    
     
 }
